@@ -10,6 +10,7 @@ var concat = require('gulp-concat');
 
 
 
+
 // ca sa transformam fisiere sass/scss in fisiere css: gulp sass
 function sasstocss() {
   return gulp
@@ -76,7 +77,7 @@ gulp.task('images', () => {
       //.src('assets/img/slide2.png')
       .src('dev/img/*')  // recursiv in toate subfolderele
       // daca apare o eroare nu se opreste si sare peste
-      //.pipe(plumber())
+      .pipe(plumber())
 //     resize image
       .pipe(imageResize({ width: size.width }))
 //       add suffix to image

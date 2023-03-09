@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">Get data</button>
+    <div id="p"></div>
+
+    <script>
+        const btn = document.getElementById('btn');
+        const p = document.getElementById('p');
+
+        btn.addEventListener('click', getData());
+        function getData() {
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://api.coindesk.com/v1/bpi/currentprice.json', true);
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    const data = JSON.parse(this.responseText)
+                    console.table(data);
+
+                    p.innerHTML += 
+`
+   <p>Name: ${data.chartName}</p>
+   <p>Date: ${data.time.updated}</p>
+   <p>price: ${data.bpi.USD.rate} USD</p>
+   <p>price: ${data.bpi.EUR.rate} USD</p>
+   <p>price: ${data.bpi.GBP.rate} USD</p> 
+`
+
+
+
+                }
+            }
+            xhr.onerror = function () {
+                const error = `404: Not Found`
+                console.log(error);
+                p.innerHTML = error;
+            }
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>

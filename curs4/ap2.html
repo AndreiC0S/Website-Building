@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">Get Data</button>
+    <p id="p"></p>
+
+    <div id="loader" class="lds-dual-ring hidden overlay"></div>
+    <script>
+        console.clear();
+
+        const btn = document.getElementById('btn');
+        const p = document.getElementById('p');
+
+        btn.addEventListener('click', getData);
+        function getData() {
+            document.getElementById('loader').classList.remove('hidden');
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://forbes400.onrender.com/api/forbes400?limit=10', true);
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    const data = JSON.parse(this.responseText)
+                    console.table(data);
+                    data.forEach(item => {
+                        p.innerHTML += `
+  
+   
+   <li>Name ${item.personName} Pozitie: ${item.position} Industrie: ${item.industries} /li>
+   
+   
+
+   `
+                    })
+
+
+                }
+            }
+            xhr.onerror = function () {
+                const error = `404: Not Found`
+                console.log(error);
+                p.innerHTML = error;
+            }
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>

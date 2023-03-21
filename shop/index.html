@@ -21,33 +21,13 @@
     <div class="p-5 bg-warning">
         <h1>Demo Header</h1>
     </div>
-    <nav id="navbar_top" class="navbar  navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a href="#" class="navbar-brand">
-                <img src="./assets/img/logo.svg" height="28" alt="Logo">
-            </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav">
-                    <a href="#sec-home" class="nav-item nav-link ">Acasa</a>
-                    <a href="#sec-about" class="nav-item nav-link">Despre</a>
-                    <a href="#sec-produse" class="nav-item nav-link">Produse</a>
-                    <a href="#sec-contact" class="nav-item nav-link">Contact</a>
-                </div>
-                <div class="navbar-nav ms-auto">
-                    <a href="#" class="nav-item nav-link">Login</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <section w3-include-html="navbar.html"> </section>
 
     <!-- STOP Section NAVBAR -->
 
     <!-- START Section CAROUSEL -->
 
-    <div id="sec-home" class="container-lg my-3">
+    <div id="sec-home" class="container-lg">
         <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
             <!-- Carousel indicators -->
             <ol class="carousel-indicators">
@@ -400,6 +380,12 @@
     </section>
     <!-- STOP Section CONTACT -->
 
+    <!-- Start footer Section -->
+
+    <section w3-include-html="footer.html"> </section>
+
+    <!-- Stop Footer Section -->
+
     <!-- ---------------------------------------------------------------------------------------------------------------------------- -->
     <!--jQery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -410,6 +396,7 @@
         crossorigin="anonymous"></script>
     <!-- JS - MAIN -->
     <script src="./assets/js/main-min.js"></script>
+    <script src="./assets/js/cart.js"></script>
     
 
 </body>
